@@ -1,3 +1,5 @@
+using System.Reflection;
+
 namespace LW4_OOP_Part2
 {
     public partial class Form1 : Form
@@ -10,26 +12,29 @@ namespace LW4_OOP_Part2
             model.DataChanged += new EventHandler(update_from_model);
             this.update_from_model(this, null);
         }
-        private void textBox_TextChanged(object sender, EventArgs e)
+        private void textBox_TextChanged(object sender, KeyEventArgs e)
         {
-            if (sender == textBox_A)
-                try
-                {
-                    model.A = int.Parse(textBox_A.Text);
-                }
-                catch { model.A = 0; }
-            else if (sender == textBox_B)
-                try
-                {
-                    model.B = int.Parse(textBox_B.Text);
-                }
-                catch { model.B = 0; }
-            else
-                try
-                {
-                    model.C = int.Parse(textBox_C.Text);
-                }
-                catch { model.C = 0; }
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (sender == textBox_A)
+                    try
+                    {
+                        model.A = int.Parse(textBox_A.Text);
+                    }
+                    catch { model.A = 0; }
+                else if (sender == textBox_B)
+                    try
+                    {
+                        model.B = int.Parse(textBox_B.Text);
+                    }
+                    catch { model.B = 0; }
+                else
+                    try
+                    {
+                        model.C = int.Parse(textBox_C.Text);
+                    }
+                    catch { model.C = 0; }
+            }
         }
         private void numericUpDown_ValueChanged(object sender, EventArgs e)
         {
@@ -57,9 +62,22 @@ namespace LW4_OOP_Part2
             numericUpDown_A.Value = model.A;
             numericUpDown_B.Value = model.B;
             numericUpDown_C.Value = model.C;
+            numericUpDown_A.Text = model.A.ToString();
+            numericUpDown_B.Text = model.B.ToString();
+            numericUpDown_C.Text = model.C.ToString();
             trackBar_A.Value = model.A;
             trackBar_B.Value = model.B;
             trackBar_C.Value = model.C;
+        }
+
+        private void Form1_MouseDown(object sender, MouseEventArgs e)
+        {
+            this.update_from_model(this, null);
+        }
+
+        private void Form1_Leave(object sender, EventArgs e)
+        {
+            this.update_from_model(this, null);
         }
 
     }

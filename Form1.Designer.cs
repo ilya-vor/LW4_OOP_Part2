@@ -1,4 +1,6 @@
-﻿namespace LW4_OOP_Part2
+﻿using System.Windows.Forms;
+
+namespace LW4_OOP_Part2
 { 
     partial class Form1
     {
@@ -50,7 +52,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 50F);
-            label1.Location = new Point(82, 57);
+            label1.Location = new Point(60, 43);
             label1.Name = "label1";
             label1.Size = new Size(521, 112);
             label1.TabIndex = 0;
@@ -63,7 +65,7 @@
             textBox_A.Name = "textBox_A";
             textBox_A.Size = new Size(103, 27);
             textBox_A.TabIndex = 1;
-            textBox_A.TextChanged += textBox_TextChanged;
+            textBox_A.KeyDown += textBox_TextChanged;
             // 
             // numericUpDown_A
             // 
@@ -73,7 +75,7 @@
             numericUpDown_A.Size = new Size(104, 27);
             numericUpDown_A.TabIndex = 2;
             numericUpDown_A.ValueChanged += numericUpDown_ValueChanged;
-            numericUpDown_A.Enter += numericUpDown_ValueChanged;
+            numericUpDown_A.MouseLeave += Form1_Leave;
             // 
             // textBox_B
             // 
@@ -82,7 +84,7 @@
             textBox_B.Name = "textBox_B";
             textBox_B.Size = new Size(103, 27);
             textBox_B.TabIndex = 3;
-            textBox_B.TextChanged += textBox_TextChanged;
+            textBox_B.KeyDown += textBox_TextChanged;
             // 
             // numericUpDown_B
             // 
@@ -92,7 +94,7 @@
             numericUpDown_B.Size = new Size(104, 27);
             numericUpDown_B.TabIndex = 4;
             numericUpDown_B.ValueChanged += numericUpDown_ValueChanged;
-            numericUpDown_B.Enter += numericUpDown_ValueChanged;
+            numericUpDown_B.MouseLeave += Form1_Leave;
             // 
             // textBox_C
             // 
@@ -101,7 +103,7 @@
             textBox_C.Name = "textBox_C";
             textBox_C.Size = new Size(103, 27);
             textBox_C.TabIndex = 5;
-            textBox_C.TextChanged += textBox_TextChanged;
+            textBox_C.KeyDown += textBox_TextChanged;
             // 
             // numericUpDown_C
             // 
@@ -111,7 +113,7 @@
             numericUpDown_C.Size = new Size(104, 27);
             numericUpDown_C.TabIndex = 6;
             numericUpDown_C.ValueChanged += numericUpDown_ValueChanged;
-            numericUpDown_C.Enter += numericUpDown_ValueChanged;
+            numericUpDown_C.MouseLeave += Form1_Leave;
             // 
             // trackBar_A
             // 
@@ -161,6 +163,8 @@
             Margin = new Padding(3, 4, 3, 4);
             Name = "Form1";
             Text = "Form1";
+            Leave += Form1_Leave;
+            MouseDown += Form1_MouseDown;
             ((System.ComponentModel.ISupportInitialize)numericUpDown_A).EndInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDown_B).EndInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDown_C).EndInit();
