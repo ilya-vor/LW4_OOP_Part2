@@ -13,11 +13,23 @@ namespace LW4_OOP_Part2
         private void textBox_TextChanged(object sender, EventArgs e)
         {
             if (sender == textBox_A)
-                model.A = int.Parse(textBox_A.Text);
+                try
+                {
+                    model.A = int.Parse(textBox_A.Text);
+                }
+                catch { model.A = 0; }
             else if (sender == textBox_B)
-                model.B = int.Parse(textBox_B.Text);
+                try
+                {
+                    model.B = int.Parse(textBox_B.Text);
+                }
+                catch { model.B = 0; }
             else
-                model.C = int.Parse(textBox_C.Text);
+                try
+                {
+                    model.C = int.Parse(textBox_C.Text);
+                }
+                catch { model.C = 0; }
         }
         private void numericUpDown_ValueChanged(object sender, EventArgs e)
         {
@@ -49,6 +61,7 @@ namespace LW4_OOP_Part2
             trackBar_B.Value = model.B;
             trackBar_C.Value = model.C;
         }
+
     }
     class Model
     {
@@ -62,7 +75,21 @@ namespace LW4_OOP_Part2
             set
             {
                 selectedValueInRange(ref value);
-                if (value > B) _A = B;
+                if (value >= B)
+                {
+                    if (value < C)
+                    {
+                        _A = value;
+                        _B = value;
+                    }
+                    else
+                    {
+                        _A = value;
+                        _B = value;
+                        _C = value;
+                    }
+
+                }
                 else _A = value;
                 DataChanged?.Invoke(this, null);
             }
@@ -74,7 +101,7 @@ namespace LW4_OOP_Part2
             set
             {
                 selectedValueInRange(ref value);
-                if (value <= C && value >= A) _B = value;
+                if (value >= A && value <= C) _B = value;
                 DataChanged?.Invoke(this, null);
             }
         }
@@ -84,7 +111,19 @@ namespace LW4_OOP_Part2
             set
             {
                 selectedValueInRange(ref value);
-                if (value < B) _C = B;
+                if (value <= B)
+                {
+                    if (value > A) { 
+                    _C = value;
+                    B = value;
+                    }
+                    else
+                    {
+                        _A = value;
+                        _B = value;
+                        _C = value;
+                    }
+                }
                 else _C = value;
                 DataChanged?.Invoke(this, null);
             }
@@ -95,9 +134,6 @@ namespace LW4_OOP_Part2
             else if (value > 100) value = 100;
             return value;
         }
-        public Model()
-        {
-            C = 100; B = 50; A = 10;
-        }
+        public Model() { C = 100; B = 50; A = 10; }
     }
 }

@@ -73,6 +73,7 @@
             numericUpDown_A.Size = new Size(104, 27);
             numericUpDown_A.TabIndex = 2;
             numericUpDown_A.ValueChanged += numericUpDown_ValueChanged;
+            numericUpDown_A.Enter += numericUpDown_ValueChanged;
             // 
             // textBox_B
             // 
@@ -91,6 +92,7 @@
             numericUpDown_B.Size = new Size(104, 27);
             numericUpDown_B.TabIndex = 4;
             numericUpDown_B.ValueChanged += numericUpDown_ValueChanged;
+            numericUpDown_B.Enter += numericUpDown_ValueChanged;
             // 
             // textBox_C
             // 
@@ -109,38 +111,36 @@
             numericUpDown_C.Size = new Size(104, 27);
             numericUpDown_C.TabIndex = 6;
             numericUpDown_C.ValueChanged += numericUpDown_ValueChanged;
+            numericUpDown_C.Enter += numericUpDown_ValueChanged;
             // 
             // trackBar_A
             // 
             trackBar_A.Location = new Point(82, 257);
             trackBar_A.Margin = new Padding(3, 4, 3, 4);
+            trackBar_A.Maximum = 100;
             trackBar_A.Name = "trackBar_A";
             trackBar_A.Size = new Size(104, 56);
             trackBar_A.TabIndex = 7;
-            trackBar_A.Minimum = 0;
-            trackBar_A.Maximum = 100;
             trackBar_A.ValueChanged += trackBar_ValueChanged;
             // 
             // trackBar_B
             // 
             trackBar_B.Location = new Point(267, 257);
             trackBar_B.Margin = new Padding(3, 4, 3, 4);
+            trackBar_B.Maximum = 100;
             trackBar_B.Name = "trackBar_B";
             trackBar_B.Size = new Size(104, 56);
             trackBar_B.TabIndex = 8;
-            trackBar_B.Minimum = 0;
-            trackBar_B.Maximum = 100;
             trackBar_B.ValueChanged += trackBar_ValueChanged;
             // 
             // trackBar_C
             // 
             trackBar_C.Location = new Point(454, 257);
             trackBar_C.Margin = new Padding(3, 4, 3, 4);
+            trackBar_C.Maximum = 100;
             trackBar_C.Name = "trackBar_C";
             trackBar_C.Size = new Size(104, 56);
             trackBar_C.TabIndex = 9;
-            trackBar_C.Minimum = 0;
-            trackBar_C.Maximum = 100;
             trackBar_C.ValueChanged += trackBar_ValueChanged;
             // 
             // Form1
